@@ -14,12 +14,12 @@ const storage = multer.diskStorage({
   
 const upload = multer({ storage: storage })
 
-router.get("/",brandController)
-router.get("/:id",brandController)
-router.get("/create",brandController)
-router.get("/edit/:id",brandController)
+router.get("/",brandController.index)
+router.get("/:id",brandController.show)
+router.get("/create",brandController.create)
+router.get("/edit/:id",brandController.edit)
 
-router.post("/",upload.single("brand"),brandController)
+router.post("/",upload.single("brand"),brandController.save)
 router.put("/edit/:id",upload.single("brand"),brandController)
 router.delete("/:id",brandController)
 
